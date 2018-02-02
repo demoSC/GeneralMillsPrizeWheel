@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src='src/winwheel/Winwheel.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+  </head>
+  <body onClick="picker();">
+
+    <div class="container" >
+      <div class="row">
+
+        <canvas id="canvas" style="width:300px;">
+                    Canvas not supported, please user another browser.
+        </canvas>
+        <img id="prizePointer" src="basic_pointer.png" alt="V" />
+        <script>
+
+
+          let spinWheel = new Winwheel({
+          'canvasId' : 'canvas',
+          'textOrientation' : 'curved',
+          'textAlignment' : 'center',
+          'textFontSize'    : 10,
+          'numSegments' : 6,
+          'segments' : [
+              {'fillStyle' : '#3366ff', 'text' : '$0.50'},
+              {'fillStyle' : '#99ccff', 'text' : '$1'},
+              {'fillStyle' : '#cc66ff', 'text' : '$2'},
+              {'fillStyle' : '#3366ff', 'text' : '$0.50'},
+              {'fillStyle' : '#99ccff', 'text' : '$1'},
+              {'fillStyle' : '#cc66ff', 'text' : '$2'}
+
+          ],
+          'lineWidth' : 2,
+          'animation' :                   // Note animation properties passed in constructor parameters.
+              {
+              'type'     : 'custom',  // Type of animation.
+              'duration' : 4,             // How long the animation is to take in seconds.
+              'spins'    : 6,         // The number of complete 360 degree rotations the wheel is to do.
+              'easing'       : 'Power4.easeOut',
+              'direction'    : 'clockwise',
+              'repeat'       : 0,
+              'yoyo'         : false,
+              'propertyName' : 'rotationAngle',
+              'propertyValue' : 2070
+              }
+    });
+
+    
+                    let picker = function(){
+
+                        spinWheel.startAnimation();
+                      
+
+                    };
+
+
+
+
+        </script>
+
+      </div>
+    </div>
+
+  </body>
+
+</html>
